@@ -63,14 +63,14 @@ class WeatherFragment(var city: City, var cityFragment: CityFragment, var mainAc
         textViewHumidity = textView_fragment_weather_humidity
     }
 
-    fun initializeListeners(){
+    override fun initializeListeners(){
         imageViewClose?.setOnClickListener {
             mainActivity.initiateDisplayFragment(cityFragment)
             Log.d("CLOSE","CLOSE")
         }
     }
 
-    fun initializeValues(){
+    override fun initializeValues(){
 
 
         textViewCity?.text = "${city.title}, ${city.country}"
@@ -90,7 +90,7 @@ class WeatherFragment(var city: City, var cityFragment: CityFragment, var mainAc
     }
 
 
-    fun initializeAdapter(weatherList: MutableList<Weather>) {
+    override fun initializeAdapter(weatherList: MutableList<Weather>) {
         Log.d("GO", "ADAPTER")
         Log.d("GO", weatherList.size.toString())
         weatherAdapter = WeatherAdapter(weatherList)
@@ -99,7 +99,7 @@ class WeatherFragment(var city: City, var cityFragment: CityFragment, var mainAc
     }
 
 
-    fun initializeLinearLayoutManager() {
+    override fun initializeLinearLayoutManager() {
         var temp = LinearLayoutManager(requireContext())
         temp.orientation = LinearLayoutManager.HORIZONTAL
         recyclerview_fragment_weather.layoutManager = temp
